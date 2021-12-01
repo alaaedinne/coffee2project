@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<section class="products" id="products">
+
+    <h1 class="heading"> our <span>promotion</span> </h1>
+    {% include 'partials/_alert.html' %}
+    <div class="box-container">
+        
+            {% for pro in promotion %}
+                <div class="box">
+                    
+                    <div class="icons" >
+                        <form class="faa" action="{% url 'add_to_cart' %}">
+                        <button class="fas fa-shopping-cart" type="submit" name="btnadd"></button>
+                    <input type="hidden" name="pro_id" value="{{pro.id}}">
+                    </form>
+                        <!-------------a href="#" class="fas fa-heart" --------->
+                    </div>
+                    <div class="image">
+                        <img src="{{pro.photo.url}}" alt="">
+                    </div>
+                    <div class="content">
+                        <h3>{{pro.name}}</h3>
+                        <div class="stars">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                        </div>
+                        <div class="price">${{pro.price}} <span>${{pro.anc_price}}</span></div>
+                    </div>
+                </div>
+            {% endfor %}
+        
+    </div>
+
+</section>
+{% endblock %}

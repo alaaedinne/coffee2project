@@ -1,0 +1,79 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<!-- header section starts  -->
+{% if request.user.is_authenticated %}
+<header class="header">
+
+    <a href="{% url 'index' %}" class="logo">
+        <img src="{% static  'images/logo.png' %}" alt="">
+    </a>
+
+    <nav class="navbar">
+        <a href="{% url 'index' %}">home</a>
+        <a href="{% url 'about' %}">about</a>
+        <a href="{% url 'promotion' %}">promotion</a>
+        <a href="{% url 'products' %}">all products</a>
+        <a href="{% url 'review' %}">review</a>
+        <a href="{% url 'logout' %}">profile</a>
+        <a href="{% url 'blog' %}">blogs</a>
+    </nav>
+
+    <div class="icons">
+        <div class="fas fa-search" id="search-btn"></div>
+        <a href="{% url 'cart' %}" style="color: white; font-size: 2em ; margin-left: 6px;"> Show My order </a>
+        <div class="fas fa-bars" id="menu-btn"></div>
+    </div>
+
+    <div class="search-form">
+        <input type="search" id="search-box" placeholder="search here...">
+        <label for="search-box" class="fas fa-search"></label>
+    </div>
+    
+        
+    
+</header>
+{% else %}
+<header class="header">
+
+    <a href="{% url 'index' %}" class="logo">
+        <img src="{% static  'images/logo.png' %}" alt="">
+    </a>
+
+    <nav class="navbar">
+        <a href="{% url 'index' %}">home</a>
+        <a href="{% url 'about' %}">about</a>
+        <a href="{% url 'review' %}">review</a>
+        <a href="{% url 'blog' %}">blogs</a>
+    </nav>
+</header>
+{% endif %}
+<!-- header section ends -->
+
+<!-- home section starts  -->
+
+<section class="home" id="home">
+    {% include 'partials/_alert.html' %}
+    <div class="content">
+        <h3>fresh coffee in the morning</h3>
+        <p>Welcome everybody i'm Dehgane Alaa E Dinne , i'm a web devolloper i create this mini coffee shop as a portofolio is a multi-service app contain all operations CRUD and authentication click in button down to try and learn more...</p>
+        <a href="{% if request.user.is_authenticated %} 
+                {% url 'products' %}
+                {% else %}
+                {% url 'signup' %}
+                {% endif %}"
+                 class="btn">get yours now</a>
+    </div>
+
+</section>
+
+<script>
+    function addtocart(){
+        document.getElementById('goto').submit();
+    }
+    
+</script>
+
+<!-- home section ends -->
+{% endblock %}

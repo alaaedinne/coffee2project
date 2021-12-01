@@ -1,0 +1,33 @@
+<!-- footer section starts  -->
+
+<section class="footer">
+
+    <div class="share">
+        <a href="#" class="fab fa-facebook-f"></a>
+        <a href="https://twitter.com/DehganeD" class="fab fa-twitter"></a>
+        <a href="https://www.instagram.com/s.i.l_v.e.r_/" class="fab fa-instagram"></a>
+        <a href="https://www.linkedin.com/in/alaa-dehgane-143993204" class="fab fa-linkedin"></a>
+    </div>
+
+    <div class="links">
+        {% if request.user.is_authenticated %}
+        <a href="{% url 'index' %}">home</a>
+        <a href="{% url 'about' %}">about</a>
+        <a href="{% url 'promotion' %}">promotion</a>
+        <a href="{% url 'products' %}">products</a>
+        <a href="{% url 'review' %}">review</a>
+        <a href="{% url 'logout' %}">profile</a>
+        <a href="{% url 'blog' %}">blogs</a>
+        {% else %}
+        <a href="{% url 'index' %}">home</a>
+        <a href="{% url 'about' %}">about</a>
+        <a href="{% url 'review' %}">review</a>
+        <a href="{% url 'blog' %}">blogs</a>
+        {% endif %}
+    </div>
+
+    <div class="credit">created by <span>mr. web designer</span>| <span>mr. Dehgane Alaa E Dinne</span> | all rights reserved</div>
+
+</section>
+
+<!-- footer section ends -->

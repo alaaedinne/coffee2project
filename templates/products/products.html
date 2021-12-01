@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<section class="menu" id="menu">
+
+    <h1 class="heading"> our <span>products</span> </h1>
+        {% include 'partials/_alert.html' %}
+    <div class="box-container">
+        {% for pro in products %}
+        <form method="GET" action="{% url 'add_to_cart' %}">
+            <div class="box">
+                <img src="{{pro.photo.url}}" alt="">
+                <h3>{{pro.name}}</h3>
+                <input type="hidden" name="pro_id" value="{{pro.id}}">
+                <div class="price">${{pro.price}} </div>
+                <button name="btnadd" type="submit" class="btn">add to cart</button>
+            </div>
+        </form>
+        {% endfor %}
+    </div>
+
+</section>
+{% endblock %}
